@@ -31,6 +31,9 @@ export TF_VAR_project_id=<project_id>
 terraform plan -out .plan -var project_id=<project_id>
 ```
 
+## Locals
+1. Uncomment last section of code in vm.tf and run terraform plan
+
 ## Outputs
 1. Update sesitive to true and check output value on console.
 
