@@ -35,7 +35,9 @@ resource "google_compute_instance" "default" {
   project = "Add your project ID here"
 }
 
-## Using project_id variable
+#################################################################
+#########              Using Project Variable  ##################
+#################################################################
 # resource "google_compute_instance" "default" {
 #   name         = "test21"
 #   machine_type = "e2-medium"
@@ -59,7 +61,9 @@ resource "google_compute_instance" "default" {
 #   project = var.project_id
 # }
 
-## Locals example
+#################################################################
+#########               Locals example         ##################
+#################################################################
 # locals {
 #   tags        = ["foo", "bar"]
 #   name_prefix = var.environment != "" ? "tf-${var.environment}" : "tf"
@@ -71,6 +75,32 @@ resource "google_compute_instance" "default" {
 #   zone         = "us-central1-a"
 
 #   tags = local.tags
+
+#   boot_disk {
+#     initialize_params {
+#       image = "debian-cloud/debian-11"
+#       labels = {
+#         my_label = "value"
+#       }
+#     }
+#   }
+
+#   network_interface {
+#     network = "default"
+#   }
+
+#   project = var.project_id
+# }
+
+#################################################################
+#########              Using Object Type       ##################
+#################################################################
+# resource "google_compute_instance" "default" {
+#   name         = var.vm_params.name
+#   machine_type = var.vm_params.machine_type
+#   zone         = var.vm_params.zone
+
+#   tags = ["foo", "bar"]
 
 #   boot_disk {
 #     initialize_params {

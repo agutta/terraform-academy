@@ -28,3 +28,24 @@ variable "environment" {
   default     = "env"
   description = "description"
 }
+
+variable "vm_params" {
+  type        = object({
+    name                      = string
+    machine_type              = string
+    zone                      = string
+    allow_stopping_for_update = bool
+  })
+  description = "vm parameters"
+  default     = {
+    name                      = "terraform-instance"
+    machine_type              = "f1-micro"
+    zone                      = "us-central1-a"
+    allow_stopping_for_update = true
+  }
+
+  validation {
+    condition     = length(var.vm_params.name) > 3
+    error_message = "VM name must be at least 4 characters."
+  }
+}
